@@ -18,10 +18,13 @@ class MainViewModel : ViewModel() {
 
     private val _sigma2 = MutableLiveData<Double?>()
 
+    // для отображения сообщений о необходимости ввести данные
     private val _toastMessage = MutableLiveData<String>()
     val toastMessage: LiveData<String> get() = _toastMessage
 
+    // генерация случайного числа
     fun generateNumber() {
+        // проверка данных, обновление сообщения при необходимости
         if (_mu.value == null) {
             _toastMessage.value = "Please, enter µ"
             return
@@ -30,11 +33,13 @@ class MainViewModel : ViewModel() {
             _toastMessage.value = "Please, enter σ^2"
             return
         }
+        // использование соответствующего юзкейса
         _randomNumber.value = getRandomNumberUseCase.execute(
             RandomNumberInputParams(_mu.value!!, _sigma2.value!!)
         ).number
     }
 
+    // функции обновления значений
     fun setMu(value: Double?) {
         _mu.value = value
     }
