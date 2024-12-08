@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">electiveHW1</string>
+    <string name="enter_mu">Enter µ</string>
+    <string name="enter_sigma2">Enter σ^2</string>
+    <string name="generate_random_number">Generate Random Number</string>
+    <string name="result">Result</string>
+</resources>
