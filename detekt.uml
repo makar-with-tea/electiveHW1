@@ -1,0 +1,13 @@
+build:
+  maxIssues: 0
+  weights:
+    complexity: 2
+    LongParameterList: 1
+    style: 1
+  excludeCorrectable: true
+  autoCorrect: true
+
+style:
+  MagicNumber:
+    active: true
+    ignoreNumbers: '-1,0,1,2,100'
