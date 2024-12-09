@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         val sigma2 = findViewById<EditText>(R.id.variance_value)
         val mu = findViewById<EditText>(R.id.mean_val)
         val randomNumber = findViewById<TextView>(R.id.random_number_result)
-        val getNumberButton =  findViewById<Button>(R.id.get_random_num)
+        val getNumberButton = findViewById<Button>(R.id.get_random_num)
 
         // обновление значения случайного числа при его изменении во вьюмодели
         viewModel.randomNumber.observe(this) { value ->
@@ -50,6 +50,5 @@ class MainActivity : AppCompatActivity() {
                 viewModel.clearToastMessage()
             }
         }
-
     }
 }

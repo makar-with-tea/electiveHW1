@@ -54,6 +54,10 @@ dependencies {
 }
 
 detekt {
-    config = files("$rootDir/detekt.yml")
+    config.from("$rootDir/detekt.yml")
     buildUponDefaultConfig = true
+}
+
+tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+    jvmTarget = "1.8"
 }
