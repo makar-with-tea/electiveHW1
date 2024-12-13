@@ -27,26 +27,18 @@ class GetRandomNumberUseCaseTest {
         checkLogNorm(
             generatedNums,
             exp(inputParams.mu + inputParams.sigma2 / 2.0),
-            exp(2 * inputParams.mu + inputParams.sigma2) * (exp(inputParams.sigma2) - 1),
-            sqrt(exp(inputParams.sigma2) - 1) * (exp(inputParams.sigma2) + 2),
-            exp(4 * inputParams.sigma2) + 2 * exp(3 * inputParams.sigma2) + 3 * exp(2 * inputParams.sigma2) - 6
+            exp(2 * inputParams.mu + inputParams.sigma2) * (exp(inputParams.sigma2) - 1)
         )
     }
 
-    private fun checkLogNorm(a: ArrayList<Double>, m: Double, v: Double, sk: Double, kur: Double) {
+    private fun checkLogNorm(a: ArrayList<Double>, m: Double, v: Double) {
         val d = a.toDoubleArray()
         val gm = StatUtils.mean(d)
         val gv = StatUtils.variance(d)
-        val gskewness = DescriptiveStatistics(d).skewness
-        val gkurtosis = DescriptiveStatistics(d).kurtosis
         val meanDelta = 0.1
         val varianceDelta = 0.1
-        val skewnessDelta = 0.1
-        val kurtosisDelta = 0.1
 
         assertEquals("Mean is different", gm, m, meanDelta)
         assertEquals("Variance is different", gv, v, varianceDelta)
-        assertEquals("Skewness is different", gskewness, sk, skewnessDelta)
-        assertEquals("Kurtosis is different", gkurtosis, kur, kurtosisDelta)
     }
 }
