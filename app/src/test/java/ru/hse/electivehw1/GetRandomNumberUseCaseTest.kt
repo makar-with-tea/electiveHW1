@@ -1,13 +1,11 @@
 package ru.hse.electivehw1
 
 import org.apache.commons.math3.stat.StatUtils
-import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import ru.hse.electivehw1.domain.models.RandomNumberInputParams
 import ru.hse.electivehw1.domain.usecase.GetRandomNumberUseCase
 import kotlin.math.exp
-import kotlin.math.sqrt
 
 class GetRandomNumberUseCaseTest {
 
