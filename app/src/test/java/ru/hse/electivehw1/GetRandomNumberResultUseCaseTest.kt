@@ -7,9 +7,10 @@ import ru.hse.electivehw1.domain.models.RandomNumberInputParams
 import ru.hse.electivehw1.domain.usecase.GetRandomNumberUseCase
 import kotlin.math.exp
 
-class GetRandomNumberUseCaseTest {
+class GetRandomNumberResultUseCaseTest {
 
     // тест написан по аналогии с instrumented test, но только для юзкейса
+    // и с большим пространством для ошибки
     @Test
     fun testLogNormalDistribution() {
         val useCase = GetRandomNumberUseCase()

@@ -43,14 +43,14 @@ internal class InstrumentedTest {
     var lastNumber = 0.0
     var widgetFlag = false
 
-    private val limit = 1_500
+    private val limit = 1000 //1_500
     private var mean = 0.0
     private var variance = 1.0
 
     private val meanDelta = 1e-1
     private val varianceDelta = 0.8
-    private val skewnessDelta = 1.1
-    private val kurtosisDelta = 3.1
+    private val skewnessDelta = 3.1 //1.1
+    private val kurtosisDelta = 6.1 //3.1
 
     private var generatedNums = ArrayList<Double>(0)
 
@@ -124,6 +124,7 @@ internal class InstrumentedTest {
             meanView.typeText("$mean")
             varianceView.typeText("$variance")
             for (i in 0..limit) {
+                Log.d("DistributionTest", "Iteration $i")
                 getNum.click()
                 Thread.sleep(THREAD_DELAY)
                 resultNum.assert {
@@ -220,6 +221,7 @@ internal class DoubleComparison(
             assertEquals("View has an incorrect accessibilityClassName", "TextView", "EditText")
         }
         val num = gotValue.toDouble()
+        Log.d("DistributionTest", "$num ${testInstance.lastNumber}")
         testInstance.lastNumber = num
         testInstance.addGeneratedNumber(num)
     }

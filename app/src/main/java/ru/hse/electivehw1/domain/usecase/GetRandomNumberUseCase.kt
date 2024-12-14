@@ -1,16 +1,14 @@
 package ru.hse.electivehw1.domain.usecase
 
-import ru.hse.electivehw1.domain.models.RandomNumber
+import org.apache.commons.math3.distribution.LogNormalDistribution
 import ru.hse.electivehw1.domain.models.RandomNumberInputParams
-import java.util.Random
-import kotlin.math.exp
+import ru.hse.electivehw1.domain.models.RandomNumberResult
 import kotlin.math.sqrt
 
 class GetRandomNumberUseCase {
-    fun execute(inputParams: RandomNumberInputParams): RandomNumber {
-        val sigma = sqrt(inputParams.sigma2)
-        val mu = inputParams.mu
-        val normalRandom = Random().nextGaussian() * sigma + mu
-        return RandomNumber(exp(normalRandom))
+    fun execute(inputParams: RandomNumberInputParams): RandomNumberResult {
+        val logNormalDistribution = LogNormalDistribution(inputParams.mu, sqrt(inputParams.sigma2))
+        val randomValue = logNormalDistribution.sample()
+        return RandomNumberResult(randomValue)
     }
 }
